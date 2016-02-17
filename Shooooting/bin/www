@@ -21,6 +21,10 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+//- Create Socket.io ----------------------------------------------------------------------//
+var io = require('socket.io')(server);
+
+
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -28,6 +32,19 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+//- Socket.io Connection -------------------------------------------------------------------//
+var i = 0;
+io.on('connection', function (socket) {
+    setInterval(itasu, 50);
+    function itasu(){
+        i++;
+        socket.emit("test", i);
+    }
+
+});
+
+
 
 /**
  * Normalize a port into a number, string, or false.
@@ -88,3 +105,4 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
