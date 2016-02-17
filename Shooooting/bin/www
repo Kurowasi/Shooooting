@@ -106,3 +106,8 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
+
+
+//- Create Module ---------------------------------------------------------------------------//
+var test = require("./test.js");
+console.log(test.returnJ());
