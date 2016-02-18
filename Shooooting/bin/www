@@ -35,16 +35,26 @@ server.on('listening', onListening);
 
 //- Socket.io Connection -------------------------------------------------------------------//
 var i = 0;
-io.on('connection', function (socket) {
+io.sockets.on('connection', function (socket) {
     setInterval(itasu, 50);
     function itasu(){
         i++;
         socket.emit("test", i);
     }
+    socket.on("mouseX", function(mouseX){
+       console.log(mouseX);
+       io.sockets.emit("mouseX", mouseX);
+    });
+    socket.on("mouseY", function(mouseY){
+        console.log(mouseY);
+        io.sockets.emit("mouseY", mouseY);
+    });
 
 });
 
-
+//- Create Module ---------------------------------------------------------------------------//
+var test = require("./test.js");
+console.log(test.returnJ());
 
 /**
  * Normalize a port into a number, string, or false.
@@ -108,6 +118,3 @@ function onListening() {
 
 
 
-//- Create Module ---------------------------------------------------------------------------//
-var test = require("./test.js");
-console.log(test.returnJ());

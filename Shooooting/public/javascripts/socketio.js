@@ -6,11 +6,17 @@ s.on("connect", function(data){
 });
 
 s.on("test", function(i){
-    console.log(i);
+    //console.log(i);
 });
 
 s.on("disconnect", function(){
     console.log("接続解除");
 });
 
+s.on("mouseX", function(mouseX){
+    chara.x = mouseX;
+});
 
+s.on("mouseY", function(mouseY){
+    chara.y = mouseY;
+});
