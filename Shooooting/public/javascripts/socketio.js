@@ -12,15 +12,27 @@ s.on("disconnect", function(){
 });
 
 
-// draw background
+// socket background
 s.on("Background", function(CANVAS){
     'use strict';
+    // draw background
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.fillRect(CANVAS.x, CANVAS.y, CANVAS.WIDTH, CANVAS.HEIGHT);
 });
 
-// draw chara
+// socket chara
 s.on("Chara", function(Chara){
+    // draw chara
     ctx.fillStyle = "rgb(255, 0, 0)";
     ctx.fillRect(Chara.x, Chara.y, Chara.w, Chara.h);
+    
+    // draw chara shot
+    Chara.shots.forEach(function(s, i){
+        'use strict';
+        ctx.fillStyle = "rgb(255, 0, 0)";
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.closePath();
+    });
 });

@@ -40,16 +40,23 @@ var CANVAS = require("./Canvas.js");
 
 //- Socket.io Connection -------------------------------------------------------------------//
 io.sockets.on('connection', function (socket) {
-    setInterval(mainLoop, 16);
+    setInterval(mainLoop, 1);
     function mainLoop(){
         socket.emit("Background", CANVAS.returnCanvas());
         socket.emit("Chara", Chara.returnChara());
+        
+        // update chara shot
+        Chara.updateCharaShots();
+        
     }
     socket.on("mouseX", function(mouseX){
         Chara.setCharaX(mouseX);
     });
     socket.on("mouseY", function(mouseY){
         Chara.setCharaY(mouseY);
+    });
+    socket.on("mouseDown", function(){
+        Chara.makeShot();
     });
 
 });

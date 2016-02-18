@@ -8,5 +8,5 @@ function mouseMove(e){
 //- mouseDown function -----------------------------------------------------------//
 function mouseDown(){
     'use strict';
-    chara.shots.push(new Shot());
+    s.emit("mouseDown");
 }
