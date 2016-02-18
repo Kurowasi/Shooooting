@@ -7,7 +7,7 @@ var Chara = {
 };
 
 function charaShot(){
-    this.x = Chara.x;
+    this.x = Chara.x + (Chara.w / 2);
     this.y = Chara.y;
     this.r = 10;
 }
@@ -15,7 +15,7 @@ function charaShot(){
 charaShot.prototype = {
     update: function(){
         'use strict';
-        this.y += 10;
+        this.y += 20;
     }
 }
 
