@@ -20,16 +20,5 @@ function init(){
     
     // inisialize evet listener
     canvas.addEventListener('mousemove', mouseMove);
-    
-    // inisialize chara
-    chara = new Chara();
-    
-    // inisialize loop
-    loop = setInterval(mainLoop, 16);
-}
-
-//- mainLoop function --------------------------------------------------------------------//
-function mainLoop(){
-    'use strict';
-    draw();
+    canvas.addEventListener('mousedown', mouseDown);
 }
