@@ -42,6 +42,7 @@ s.on("Enemy", function(enemies){
     // draw enemy
     enemies.forEach(function(e, i){
         'use strict';
+        console.log(e.x);
         ctx.fillStyle = "rgb(0, 0, 255)";
         ctx.fillRect(e.x, e.y, e.w, e.h);
     });

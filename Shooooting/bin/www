@@ -50,6 +50,15 @@ io.sockets.on('connection', function (socket) {
         if(timer % 100 == 0){
             Enemy.makeEnemy();
         }
+        if(timer % 200 == 0){
+            Enemy.makeEnemy01();
+        }
+        if(timer % 300 == 0){
+            Enemy.makeEnemy02();
+        }
+        if(timer % 400 == 0){
+            Enemy.makeEnemy03();
+        }
      
         // update chara shot
         Chara.updateCharaShots();
