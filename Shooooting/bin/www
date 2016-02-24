@@ -70,6 +70,7 @@ io.sockets.on('connection', function (socket) {
         socket.emit("Background", CANVAS.returnCanvas());
         socket.emit("Chara", Chara.returnChara());
         socket.emit("Enemy", Enemy.returnEnemies());
+        socket.emit("Shots", Enemy.returnShots());
         
     }
     socket.on("mouseX", function(mouseX){

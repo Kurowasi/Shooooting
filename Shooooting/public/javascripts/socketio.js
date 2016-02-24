@@ -42,8 +42,22 @@ s.on("Enemy", function(enemies){
     // draw enemy
     enemies.forEach(function(e, i){
         'use strict';
-        console.log(e.x);
         ctx.fillStyle = "rgb(0, 0, 255)";
         ctx.fillRect(e.x, e.y, e.w, e.h);
+    });
+});
+
+
+// socket enemyShots
+s.on("Shots", function(shots){
+    'use strict';
+    // draw enemy shots
+    shots.forEach(function(s, i){
+        'use strict';
+        ctx.fillStyle = "rgb(0, 0, 255)";
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.closePath();
     });
 });
