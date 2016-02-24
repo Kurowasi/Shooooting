@@ -1,6 +1,8 @@
 //- global variables ------------------------------------------------------------------------//
 var enemies = [];
 var shots = [];
+var Chara = require("./chara.js");
+var chara;
 //- Enemy constructor ----------------------------------------------------------------------//
 function Enemy(){
     'use strict';
@@ -11,7 +13,8 @@ function Enemy(){
     this.timer = 0;
     
     this.shot = {
-        r: 10
+        r: 10,
+        interval: 300
     };
 }
 Enemy.prototype.makeShot = function(){
@@ -27,7 +30,8 @@ function Enemy01(){
     this.h = 60;
     
     this.shot = {
-        r: 20
+        r: 20,
+        interval: 100
     };
 }
 Enemy01.prototype = new Enemy();
@@ -39,7 +43,8 @@ function Enemy02(){
     this.h = 60;
     
     this.shot = {
-        r: 10
+        r: 10,
+        interval: 100
     };
 }
 Enemy02.prototype = new Enemy();
@@ -51,7 +56,8 @@ function Enemy03(){
     this.h = 30;
     
     this.shot = {
-        r: 20
+        r: 20,
+        interval: 100
     };
 }
 Enemy03.prototype = new Enemy();
@@ -90,7 +96,7 @@ module.exports = {
     },
     update: function(){
         'use strict';
-        //console.log(enemies.length);
+        chara = Chara.returnChara();
         enemies.forEach(function(e, i){
             'use strict';
                         
@@ -104,9 +110,22 @@ module.exports = {
             }
             
             // make enemy shots
-            if(e.timer % 200 == 0){
+            if(e.timer % e.shot.interval == 0){
                 e.makeShot();
             }
+            
+            // Collision Detection Chara shots
+            chara.shots.forEach(function(s, j){
+                'use strict';
+                if((e.y < s.y - s.r) && (s.y - s.r < e.y + e.h)){
+                    if((e.x < s.x - s.r) && (e.x + e.w > s.x - s.r) || (e.x < s.x + s.r) && (e.x + e.w > s.x + s.r)){
+                        console.log("衝突");
+                        //console.log(i);
+                        chara.shots.splice(j, 1);
+                        enemies.splice(i, 1);
+                    }
+                }
+            });
         });
         
         // enemy shots
