@@ -14,7 +14,7 @@ function Chara(id){
 Chara.prototype = {
     makeShot: function(){
         'use strict';
-        this.shots.push(new CharaShot());        
+        this.shots.push(new CharaShot(this.x, this.y));        
     },
     updateShots: function(){
         'use strict';
@@ -41,9 +41,9 @@ Chara.prototype = {
     }
 }
 //- CharaShot constructor ----------------------------------------------------------------//
-function CharaShot(){
-    this.x = 100;
-    this.y = 100;
+function CharaShot(x, y){
+    this.x = x + 15;
+    this.y = y + 15;
     this.r = 10;
     this.offensivePower = 100;
 }

@@ -33,7 +33,7 @@ s.on("Chara", function(charas){
             'use strict';
             ctx.fillStyle = "rgb(255, 0, 0)";
             ctx.beginPath();
-            ctx.arc(s.x, s.y + i * 30, s.r, 0, Math.PI * 2);
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
             ctx.fill();
             ctx.closePath();
         });
