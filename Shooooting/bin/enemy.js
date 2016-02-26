@@ -117,6 +117,14 @@ module.exports = {
                 e.makeShot();
             }
             
+            // collision detection enemy and chara
+            if((chara.y < e.y) && (e.y < (chara.y + chara.h)) || ((chara.y < (e.y + e.h)) && (e.y + e.h) < (chara.y + chara.h))){
+                if((chara.x < e.x) && (e.x < (chara.x + chara.w)) || ((chara.x < (e.x + e.w)) && ((e.x + e.w) < (chara.x + chara.w)))){
+                    enemies.splice(i, 1);
+                }
+            }
+            
+            
             // Collision Detection Chara shots
             chara.shots.forEach(function(s, j){
                 'use strict';
