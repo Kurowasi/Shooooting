@@ -96,7 +96,10 @@ module.exports = {
     },
     update: function(){
         'use strict';
+        // update chara
         chara = Chara.returnChara();
+        
+        // enemy
         enemies.forEach(function(e, i){
             'use strict';
                         
@@ -119,8 +122,6 @@ module.exports = {
                 'use strict';
                 if((e.y < s.y - s.r) && (s.y - s.r < e.y + e.h)){
                     if((e.x < s.x - s.r) && (e.x + e.w > s.x - s.r) || (e.x < s.x + s.r) && (e.x + e.w > s.x + s.r)){
-                        console.log("衝突");
-                        //console.log(i);
                         chara.shots.splice(j, 1);
                         enemies.splice(i, 1);
                     }
@@ -131,9 +132,18 @@ module.exports = {
         // enemy shots
         shots.forEach(function(s, i){
             'use strict';
+            
+            // move enemy shots
             s.y += 2;
             if(s.y >= 600){
                 shots.splice(i, 1);
+            }
+            
+            // collision detection chara
+            if((chara.y < (s.y + s.r)) && ((s.y + s.r) < (chara.y + chara.h))){
+                if((chara.x < (s.x - s.r)) && ((s.x - s.r) < (chara.x + chara.w)) || ((chara.x < (s.x + s.r)) && ((s.x + s.r) < (chara.x + chara.w)))){
+                    shots.splice(i, 1);
+                }
             }
         });
     }
