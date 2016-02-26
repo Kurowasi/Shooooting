@@ -15,6 +15,7 @@ function Enemy(){
     
     this.shot = {
         r: 10,
+        offensivePower: 30,
         interval: 300
     };
 }
@@ -33,6 +34,7 @@ function Enemy01(){
     
     this.shot = {
         r: 20,
+        offensivePower: 100,
         interval: 100
     };
 }
@@ -47,6 +49,7 @@ function Enemy02(){
     
     this.shot = {
         r: 10,
+        offensivePower: 30,
         interval: 100
     };
 }
@@ -61,6 +64,7 @@ function Enemy03(){
     
     this.shot = {
         r: 20,
+        offensivePower: 100,
         interval: 100
     };
 }
@@ -70,7 +74,8 @@ function EnemyShot(x, y, s){
     'use strict';
     this.x = x;
     this.y = y;
-    this.r = s.r; 
+    this.r = s.r;
+    this.offensivePower = s.offensivePower;
 }
 //- module.exports --------------------------------------------------------------------------//
 module.exports = {
