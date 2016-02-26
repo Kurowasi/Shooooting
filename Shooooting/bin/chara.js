@@ -11,6 +11,7 @@ function charaShot(){
     this.x = Chara.x + (Chara.w / 2);
     this.y = Chara.y;
     this.r = 10;
+    this.offensivePower = 100;
 }
 
 charaShot.prototype = {
@@ -42,6 +43,7 @@ module.exports = {
         'use strict';
         Chara.shots.forEach(function(s, i){
             'use strict';
+            console.log(s.offensivePower);
             s.y -= 5;
             if(s.y <= 0){
                 Chara.shots.splice(i, 1);
