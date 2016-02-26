@@ -37,56 +37,57 @@ server.on('listening', onListening);
 //- require Module ---------------------------------------------------------------------------//
 var CANVAS = require("./Canvas.js");
 var Chara = require("./chara.js");
-var Enemy = require("./enemy.js");
-var userHash = [];
 //- Socket.io Connection -------------------------------------------------------------------//
 io.sockets.on('connection', function (socket) {
-    //console.log(socket.id);
-    userHash.push(socket.id);
+    //- local variables ----------------------------------------------------------------//
     var timer = 0;
     var loop = setInterval(mainLoop, 16);
+    var charas;
+    //- make chara --------------------------------------------------------------------//
+    Chara.makeChara(socket.id);
+    //- mainloop function -------------------------------------------------------------//
     function mainLoop(){
         timer++;
-        userHash.forEach(function(s, i){
-            console.log(s, i);            
+        
+        // update chara
+        charas = Chara.returnCharas();
+        
+        // update chara shots
+        charas.forEach(function(c, i){
+            'use strict';
+            c.updateShots();
         });
         
-        //make enemy
-        if(timer % 100 == 0){
-            Enemy.makeEnemy();
-        }
-        if(timer % 200 == 0){
-            Enemy.makeEnemy01();
-        }
-        if(timer % 300 == 0){
-            Enemy.makeEnemy02();
-        }
-        if(timer % 400 == 0){
-            Enemy.makeEnemy03();
-        }
-     
-        // update chara shot
-        Chara.updateCharaShots();
-        
-        // update enemy
-        Enemy.update();
-
         // socket emit
         socket.emit("Background", CANVAS.returnCanvas());
-        socket.emit("Chara", Chara.returnChara());
-        socket.emit("Enemy", Enemy.returnEnemies());
-        socket.emit("Shots", Enemy.returnShots());
-        
+        socket.emit("Chara", Chara.returnCharas());
     }
+    
     socket.on("mouseX", function(mouseX){
-        Chara.setCharaX(mouseX);
+        charas.forEach(function(c, i){
+            'use strict';
+            if(socket.id == c.id){
+                c.x = Math.min(mouseX, 900 - c.w);
+            }
+        });
     });
     socket.on("mouseY", function(mouseY){
-        Chara.setCharaY(mouseY);
+        charas.forEach(function(c, i){
+            'use strict';
+            if(socket.id == c.id){
+                c.y = Math.min(mouseY, 600 - c.h);
+            }
+        });
     });
     socket.on("mouseDown", function(){
-        Chara.makeShot();
+        charas.forEach(function(c, i){
+            'use strict';
+            if(socket.id == c.id){
+                c.makeShot();
+            }
+        });
     });
+    
 
 });
 

@@ -21,43 +21,21 @@ s.on("Background", function(CANVAS){
 });
 
 // socket chara
-s.on("Chara", function(Chara){
+s.on("Chara", function(charas){
     // draw chara
-    ctx.fillStyle = "rgb(255, 0, 0)";
-    ctx.fillRect(Chara.x, Chara.y, Chara.w, Chara.h);
-    
-    // draw chara shot
-    Chara.shots.forEach(function(s, i){
+    charas.forEach(function(c, i){
         'use strict';
         ctx.fillStyle = "rgb(255, 0, 0)";
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.closePath();
-    });
-});
-
-// socket enemy
-s.on("Enemy", function(enemies){
-    // draw enemy
-    enemies.forEach(function(e, i){
-        'use strict';
-        ctx.fillStyle = "rgb(0, 0, 255)";
-        ctx.fillRect(e.x, e.y, e.w, e.h);
-    });
-});
-
-
-// socket enemyShots
-s.on("Shots", function(shots){
-    'use strict';
-    // draw enemy shots
-    shots.forEach(function(s, i){
-        'use strict';
-        ctx.fillStyle = "rgb(0, 0, 255)";
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.closePath();
+        ctx.fillRect(c.x, c.y, c.w, c.h);
+        
+        // draw chara shot
+        c.shots.forEach(function(s, i){
+            'use strict';
+            ctx.fillStyle = "rgb(255, 0, 0)";
+            ctx.beginPath();
+            ctx.arc(s.x, s.y + i * 30, s.r, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.closePath();
+        });
     });
 });
