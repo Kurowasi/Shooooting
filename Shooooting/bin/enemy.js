@@ -141,7 +141,10 @@ module.exports = {
                 if((e.y < s.y - s.r) && (s.y - s.r < e.y + e.h)){
                     if((e.x < s.x - s.r) && (e.x + e.w > s.x - s.r) || (e.x < s.x + s.r) && (e.x + e.w > s.x + s.r)){
                         chara.shots.splice(j, 1);
-                        enemies.splice(i, 1);
+                        e.hp -= s.offensivePower;
+                        if(e.hp <= 0){
+                            enemies.splice(i, 1);
+                        }
                     }
                 }
             });
