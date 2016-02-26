@@ -37,6 +37,7 @@ server.on('listening', onListening);
 //- require Module ---------------------------------------------------------------------------//
 var CANVAS = require("./Canvas.js");
 var Chara = require("./chara.js");
+var Enemy = require("./enemy.js");
 //- Socket.io Connection -------------------------------------------------------------------//
 io.sockets.on('connection', function (socket) {
     //- local variables ----------------------------------------------------------------//
@@ -49,6 +50,20 @@ io.sockets.on('connection', function (socket) {
     function mainLoop(){
         timer++;
         
+        //make enemy
+        if(timer % 100 == 0){
+            Enemy.makeEnemy();
+        }
+        if(timer % 200 == 0){
+            Enemy.makeEnemy01();
+        }
+        if(timer % 300 == 0){
+            Enemy.makeEnemy02();
+        }
+        if(timer % 400 == 0){
+            Enemy.makeEnemy03();
+        }
+        
         // update chara
         charas = Chara.returnCharas();
         
@@ -58,9 +73,14 @@ io.sockets.on('connection', function (socket) {
             c.updateShots();
         });
         
+        // update enemy
+        Enemy.update();
+        
         // socket emit
         socket.emit("Background", CANVAS.returnCanvas());
         socket.emit("Chara", Chara.returnCharas());
+        socket.emit("Enemy", Enemy.returnEnemies());
+        socket.emit("Shots", Enemy.returnShots());
     }
     
     socket.on("mouseX", function(mouseX){

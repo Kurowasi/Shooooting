@@ -2,7 +2,7 @@
 var enemies = [];
 var shots = [];
 var Chara = require("./chara.js");
-var chara;
+var charas = [];
 //- Enemy constructor ----------------------------------------------------------------------//
 function Enemy(){
     'use strict';
@@ -106,7 +106,7 @@ module.exports = {
     update: function(){
         'use strict';
         // update chara
-        chara = Chara.returnChara();
+        charas = Chara.returnCharas();
         
         // enemy
         enemies.forEach(function(e, i){
@@ -125,7 +125,7 @@ module.exports = {
             if(e.timer % e.shot.interval == 0){
                 e.makeShot();
             }
-            
+            /*
             // collision detection enemy and chara
             if((chara.y < e.y) && (e.y < (chara.y + chara.h)) || ((chara.y < (e.y + e.h)) && (e.y + e.h) < (chara.y + chara.h))){
                 if((chara.x < e.x) && (e.x < (chara.x + chara.w)) || ((chara.x < (e.x + e.w)) && ((e.x + e.w) < (chara.x + chara.w)))){
@@ -148,6 +148,7 @@ module.exports = {
                     }
                 }
             });
+            */
         });
         
         // enemy shots
@@ -159,7 +160,7 @@ module.exports = {
             if(s.y >= 600){
                 shots.splice(i, 1);
             }
-            
+            /*
             // collision detection chara
             if((chara.y < (s.y + s.r)) && ((s.y + s.r) < (chara.y + chara.h))){
                 if((chara.x < (s.x - s.r)) && ((s.x - s.r) < (chara.x + chara.w)) || ((chara.x < (s.x + s.r)) && ((s.x + s.r) < (chara.x + chara.w)))){
@@ -167,6 +168,7 @@ module.exports = {
                     chara.hp -= s.offensivePower;
                 }
             }
+            */
         });
     }
 };
