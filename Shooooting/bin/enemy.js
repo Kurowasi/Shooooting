@@ -130,6 +130,7 @@ module.exports = {
             if((chara.y < e.y) && (e.y < (chara.y + chara.h)) || ((chara.y < (e.y + e.h)) && (e.y + e.h) < (chara.y + chara.h))){
                 if((chara.x < e.x) && (e.x < (chara.x + chara.w)) || ((chara.x < (e.x + e.w)) && ((e.x + e.w) < (chara.x + chara.w)))){
                     enemies.splice(i, 1);
+                    chara.hp -= e.hp;
                 }
             }
             
@@ -160,6 +161,7 @@ module.exports = {
             if((chara.y < (s.y + s.r)) && ((s.y + s.r) < (chara.y + chara.h))){
                 if((chara.x < (s.x - s.r)) && ((s.x - s.r) < (chara.x + chara.w)) || ((chara.x < (s.x + s.r)) && ((s.x + s.r) < (chara.x + chara.w)))){
                     shots.splice(i, 1);
+                    chara.hp -= s.offensivePower;
                 }
             }
         });

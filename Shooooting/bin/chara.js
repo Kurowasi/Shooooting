@@ -3,7 +3,7 @@ var Chara = {
     y: 0,
     w: 30,
     h: 30,
-    hp: 100,
+    hp: 1000,
     shots: []
 };
 
