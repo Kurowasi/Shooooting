@@ -43,7 +43,6 @@ module.exports = {
         'use strict';
         Chara.shots.forEach(function(s, i){
             'use strict';
-            console.log(s.offensivePower);
             s.y -= 5;
             if(s.y <= 0){
                 Chara.shots.splice(i, 1);

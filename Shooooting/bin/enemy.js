@@ -11,6 +11,7 @@ function Enemy(){
     this.w = 30;
     this.h = 30;
     this.timer = 0;
+    this.hp = 100;
     
     this.shot = {
         r: 10,
@@ -28,6 +29,7 @@ function Enemy01(){
     this.x = Math.floor(Math.random() * 870);
     this.w = 60;
     this.h = 60;
+    this.hp = 200;
     
     this.shot = {
         r: 20,
@@ -41,6 +43,7 @@ function Enemy02(){
     this.x = Math.floor(Math.random() * 870);
     this.w = 30;
     this.h = 60;
+    this.hp = 100;
     
     this.shot = {
         r: 10,
@@ -54,6 +57,7 @@ function Enemy03(){
     this.x = Math.floor(Math.random() * 870);
     this.w = 60;
     this.h = 30;
+    this.hp = 150;
     
     this.shot = {
         r: 20,
@@ -102,7 +106,7 @@ module.exports = {
         // enemy
         enemies.forEach(function(e, i){
             'use strict';
-                        
+                                    
             // enemy timer++
             e.timer++;
             
