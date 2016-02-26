@@ -38,13 +38,18 @@ server.on('listening', onListening);
 var CANVAS = require("./Canvas.js");
 var Chara = require("./chara.js");
 var Enemy = require("./enemy.js");
-
+var userHash = [];
 //- Socket.io Connection -------------------------------------------------------------------//
 io.sockets.on('connection', function (socket) {
+    //console.log(socket.id);
+    userHash.push(socket.id);
     var timer = 0;
     var loop = setInterval(mainLoop, 16);
     function mainLoop(){
         timer++;
+        userHash.forEach(function(s, i){
+            console.log(s, i);            
+        });
         
         //make enemy
         if(timer % 100 == 0){
