@@ -21,7 +21,6 @@ function Enemy(){
 }
 Enemy.prototype.makeShot = function(){
     'use strict';
-    //shots.push(new EnemyShot((this.x + this.w) / 2, this.y + this.h - this.shot.r, this.shot));
     shots.push(new EnemyShot(this.x + (this.w / 2), this.y + this.h - this.shot.r, this.shot));
 };
 //- Enemy01 constructor --------------------------------------------------------------------//
@@ -160,15 +159,18 @@ module.exports = {
             if(s.y >= 600){
                 shots.splice(i, 1);
             }
-            /*
+            
             // collision detection chara
-            if((chara.y < (s.y + s.r)) && ((s.y + s.r) < (chara.y + chara.h))){
-                if((chara.x < (s.x - s.r)) && ((s.x - s.r) < (chara.x + chara.w)) || ((chara.x < (s.x + s.r)) && ((s.x + s.r) < (chara.x + chara.w)))){
-                    shots.splice(i, 1);
-                    chara.hp -= s.offensivePower;
+            charas.forEach(function(c, j){
+                'use strict';
+                if((c.y < (s.y + s.r)) && ((s.y + s.r) < (c.y + c.h))){
+                    if((c.x < (s.x - s.r)) && ((s.x - s.r) < (c.x + c.w)) || ((c.x < (s.x + s.r)) && ((s.x + s.r) < (c.x + c.w)))){
+                        shots.splice(i, 1);
+                        c.hp -= s.offensivePower;
+                        console.log(c.hp, c.id);
+                    }
                 }
-            }
-            */
+            });
         });
     }
 };
