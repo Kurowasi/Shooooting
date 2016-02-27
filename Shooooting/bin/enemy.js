@@ -124,30 +124,33 @@ module.exports = {
             if(e.timer % e.shot.interval == 0){
                 e.makeShot();
             }
-            /*
+            
             // collision detection enemy and chara
-            if((chara.y < e.y) && (e.y < (chara.y + chara.h)) || ((chara.y < (e.y + e.h)) && (e.y + e.h) < (chara.y + chara.h))){
-                if((chara.x < e.x) && (e.x < (chara.x + chara.w)) || ((chara.x < (e.x + e.w)) && ((e.x + e.w) < (chara.x + chara.w)))){
-                    enemies.splice(i, 1);
-                    chara.hp -= e.hp;
-                }
-            }
-            
-            
-            // Collision Detection Chara shots
-            chara.shots.forEach(function(s, j){
+            charas.forEach(function(c, j){
                 'use strict';
-                if((e.y < s.y - s.r) && (s.y - s.r < e.y + e.h)){
-                    if((e.x < s.x - s.r) && (e.x + e.w > s.x - s.r) || (e.x < s.x + s.r) && (e.x + e.w > s.x + s.r)){
-                        chara.shots.splice(j, 1);
-                        e.hp -= s.offensivePower;
-                        if(e.hp <= 0){
-                            enemies.splice(i, 1);
-                        }
+                if((c.y < e.y) && (e.y < (c.y + c.h)) || ((c.y < (e.y + e.h)) && (e.y + e.h) < (c.y + c.h))){
+                    if((c.x < e.x) && (e.x < (c.x + c.w)) || ((c.x < (e.x + e.w)) && ((e.x + e.w) < (c.x + c.w)))){
+                        enemies.splice(i, 1);
+                        c.hp -= e.hp;
                     }
                 }
             });
-            */
+            
+            // Collision Detection Chara shots
+            charas.forEach(function(c){
+                c.shots.forEach(function(s, j){
+                    'use strict';
+                    if((e.y < s.y - s.r) && (s.y - s.r < e.y + e.h)){
+                        if((e.x < s.x - s.r) && (e.x + e.w > s.x - s.r) || (e.x < s.x + s.r) && (e.x + e.w > s.x + s.r)){
+                            c.shots.splice(j, 1);
+                            e.hp -= s.offensivePower;
+                            if(e.hp <= 0){
+                                enemies.splice(i, 1);
+                            }
+                        }
+                    }
+                });
+            });
         });
         
         // enemy shots
@@ -167,7 +170,6 @@ module.exports = {
                     if((c.x < (s.x - s.r)) && ((s.x - s.r) < (c.x + c.w)) || ((c.x < (s.x + s.r)) && ((s.x + s.r) < (c.x + c.w)))){
                         shots.splice(i, 1);
                         c.hp -= s.offensivePower;
-                        console.log(c.hp, c.id);
                     }
                 }
             });

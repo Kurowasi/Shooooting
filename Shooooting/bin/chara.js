@@ -24,10 +24,11 @@ Chara.prototype = {
             s.y -= 5;
             if(s.y <= 0){
                 console.log(s);
-                //this.shots.splice(i, 1);
+                this.shots.splice(i, 1); //無名関数内でのthisなのでグローバルでのthisと同じ(thisはwindowオブジェクトを指す)
             }
         });
         */
+        // 上のforEachを書き換えた。メタプログラム。これでthisを指定できる
         for (var i = 0; i < this.shots.length ; i++) {
             (function(i){
                 'use strict';
