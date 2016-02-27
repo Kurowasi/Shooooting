@@ -1,7 +1,7 @@
 window.addEventListener('load', init);
 
 //- global variables ----------------------------------------------------------------------//
-var ctx1, ctx2;
+var ctx;
 var loop;
 var timer = 0;
 var canvas = [];
@@ -25,8 +25,7 @@ function init(){
     }
     
     // inisialize ctx
-    ctx1 = canvas[0].getContext('2d');
-    ctx2 = canvas[1].getContext("2d");
+    ctx = canvas[0].getContext('2d');
     
     // inisialize loop
     loop = setInterval(mainLoop, 16);
@@ -36,10 +35,14 @@ function mainLoop(){
     'use strict';
     timer++;
     if(timer % 2 == 0){
+        ctx = canvas[1].getContext("2d");
         canvas[0].style.visibility = "visible";
         canvas[1].style.visibility = "hidden";
     }else{
+        ctx = canvas[0].getContext("2d");
         canvas[0].style.visibility = "hidden";
         canvas[1].style.visibility = "visible";
     }
+    
+    draw();
 }
