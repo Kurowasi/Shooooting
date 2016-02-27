@@ -19,18 +19,14 @@ function init(){
     for(var i = 0; i < 2; i++){
         canvas[i].width = CANVAS_WIDTH;
         canvas[i].height = CANVAS_HEIGHT;
+        // inisialize evet listener
+        canvas[i].addEventListener('mousemove', mouseMove);
+        canvas[i].addEventListener('mousedown', mouseDown);
     }
     
     // inisialize ctx
     ctx1 = canvas[0].getContext('2d');
     ctx2 = canvas[1].getContext("2d");
-    
-    // inisialize evet listener
-    canvas[0].addEventListener('mousemove', mouseMove);
-    canvas[0].addEventListener('mousedown', mouseDown);
-    canvas[1].addEventListener('mousemove', mouseMove);
-    canvas[1].addEventListener('mousedown', mouseDown);
-
     
     // inisialize loop
     loop = setInterval(mainLoop, 16);
