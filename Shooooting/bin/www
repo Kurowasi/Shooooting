@@ -108,6 +108,15 @@ io.sockets.on('connection', function (socket) {
         });
     });
     
+    socket.on("disconnect", function(){
+        'use strict';
+        charas.forEach(function(c, i){
+            'use strict';
+            if(c.id == socket.id){
+                charas.splice(i, 1);
+            }
+        });
+    });
 
 });
 
