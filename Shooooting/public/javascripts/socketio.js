@@ -16,8 +16,10 @@ s.on("disconnect", function(){
 s.on("Background", function(CANVAS){
     'use strict';
     // draw background
-    ctx.fillStyle = "rgb(0, 0, 0)";
-    ctx.fillRect(CANVAS.x, CANVAS.y, CANVAS.WIDTH, CANVAS.HEIGHT);
+    ctx1.fillStyle = "rgb(0, 0, 0)";
+    ctx1.fillRect(CANVAS.x, CANVAS.y, CANVAS.WIDTH, CANVAS.HEIGHT);
+    ctx2.fillStyle = "rgb(0, 0, 0)";
+    ctx2.fillRect(CANVAS.x, CANVAS.y, CANVAS.WIDTH, CANVAS.HEIGHT);
 });
 
 // socket chara
@@ -25,17 +27,24 @@ s.on("Chara", function(charas){
     // draw chara
     charas.forEach(function(c, i){
         'use strict';
-        ctx.fillStyle = "rgb(255, 0, 0)";
-        ctx.fillRect(c.x, c.y, c.w, c.h);
+        ctx1.fillStyle = "rgb(255, 0, 0)";
+        ctx1.fillRect(c.x, c.y, c.w, c.h);
+        ctx2.fillStyle = "rgb(255, 0, 0)";
+        ctx2.fillRect(c.x, c.y, c.w, c.h);
         
         // draw chara shot
         c.shots.forEach(function(s, i){
             'use strict';
-            ctx.fillStyle = "rgb(255, 0, 0)";
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.closePath();
+            ctx1.fillStyle = "rgb(255, 0, 0)";
+            ctx1.beginPath();
+            ctx1.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            ctx1.fill();
+            ctx1.closePath();
+            ctx2.fillStyle = "rgb(255, 0, 0)";
+            ctx2.beginPath();
+            ctx2.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            ctx2.fill();
+            ctx2.closePath();
         });
     });
 });
@@ -46,8 +55,10 @@ s.on("Enemy", function(enemies){
     // draw enemy
     enemies.forEach(function(e, i){
         'use strict';
-        ctx.fillStyle = "rgb(0, 0, 255)";
-        ctx.fillRect(e.x, e.y, e.w, e.h);
+        ctx1.fillStyle = "rgb(0, 0, 255)";
+        ctx1.fillRect(e.x, e.y, e.w, e.h);
+        ctx2.fillStyle = "rgb(0, 0, 255)";
+        ctx2.fillRect(e.x, e.y, e.w, e.h);
     });
 });
 
@@ -58,10 +69,15 @@ s.on("Shots", function(shots){
     // draw enemy shots
     shots.forEach(function(s, i){
         'use strict';
-        ctx.fillStyle = "rgb(0, 0, 255)";
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.closePath();
+        ctx1.fillStyle = "rgb(0, 0, 255)";
+        ctx1.beginPath();
+        ctx1.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx1.fill();
+        ctx1.closePath();
+        ctx2.fillStyle = "rgb(0, 0, 255)";
+        ctx2.beginPath();
+        ctx2.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx2.fill();
+        ctx2.closePath();
     });
 });
