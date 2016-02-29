@@ -38,8 +38,10 @@ server.on('listening', onListening);
 var CANVAS = require("./Canvas.js");
 var Chara = require("./chara.js");
 var Enemy = require("./enemy.js");
+var count = 0;
 //- Socket.io Connection -------------------------------------------------------------------//
 io.sockets.on('connection', function (socket) {
+    count++;
     //- local variables ----------------------------------------------------------------//
     var timer = 0;
     var loop = setInterval(mainLoop, 16);
@@ -49,6 +51,7 @@ io.sockets.on('connection', function (socket) {
     //- mainloop function -------------------------------------------------------------//
     function mainLoop(){
         timer++;
+        console.log("接続人数は" + count + "です");
         
         //make enemy
         if(timer % 100 == 0){
@@ -110,6 +113,7 @@ io.sockets.on('connection', function (socket) {
     
     socket.on("disconnect", function(){
         'use strict';
+        count--;
         charas.forEach(function(c, i){
             'use strict';
             if(c.id == socket.id){
