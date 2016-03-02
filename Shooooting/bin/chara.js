@@ -10,6 +10,7 @@ function Chara(id){
     this.hp = 1000;
     this.shots = [];
     this.id = id;
+    this.point = 0;
 }
 Chara.prototype = {
     makeShot: function(){

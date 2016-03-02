@@ -87,6 +87,7 @@ io.sockets.on('connection', function (socket) {
             'use strict';
             if(c.hp <= 0){
                 if(c.id == socket.id){
+                    socket.emit("Result", c.point);
                     socket.disconnect();
                 }
             }

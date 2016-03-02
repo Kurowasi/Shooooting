@@ -6,6 +6,7 @@ var loop;
 var timer = 0;
 var canvas = [];
 var gameFlag = true;
+var result;
 //- constant ------------------------------------------------------------------------------//
 var CANVAS_WIDTH = 900, CANVAS_HEIGHT = 600;
 //- init function -------------------------------------------------------------------------//

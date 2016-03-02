@@ -12,6 +12,7 @@ function Enemy(){
     this.h = 30;
     this.timer = 0;
     this.hp = 100;
+    this.point = 100;
     
     this.shot = {
         r: 10,
@@ -30,6 +31,7 @@ function Enemy01(){
     this.w = 60;
     this.h = 60;
     this.hp = 200;
+    this.point = 200;
     
     this.shot = {
         r: 20,
@@ -45,6 +47,7 @@ function Enemy02(){
     this.w = 30;
     this.h = 60;
     this.hp = 100;
+    this.point = 100;
     
     this.shot = {
         r: 10,
@@ -60,6 +63,7 @@ function Enemy03(){
     this.w = 60;
     this.h = 30;
     this.hp = 150;
+    this.point = 150;
     
     this.shot = {
         r: 20,
@@ -153,6 +157,7 @@ module.exports = {
                             c.shots.splice(j, 1);
                             e.hp -= s.offensivePower;
                             if(e.hp <= 0){
+                                c.point += e.point;
                                 enemies.splice(i, 1);
                             }
                         }

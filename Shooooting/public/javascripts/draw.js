@@ -42,5 +42,6 @@ function draw(){
         ctx.fillStyle = "rgb(255, 0, 0)";
         ctx.font = "64px 'Comic Sans MS'";
         ctx.fillText("GAME OVER", (CANVAS_WIDTH / 2) - 200, (CANVAS_HEIGHT / 2));
+        ctx.fillText("スコア：" + result + "点", (CANVAS_WIDTH / 2) - 200, (CANVAS_HEIGHT / 2) + 100);
     }
 }

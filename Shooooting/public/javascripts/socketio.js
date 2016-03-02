@@ -41,3 +41,9 @@ s.on("Shots", function(shots1){
     'use strict';
     shots = shots1;
 });
+
+// socket result
+s.on("Result", function(result1){
+    'use strict';
+    result = result1;
+});
