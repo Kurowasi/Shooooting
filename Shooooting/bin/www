@@ -38,6 +38,7 @@ server.on('listening', onListening);
 var CANVAS = require("./Canvas.js");
 var Chara = require("./chara.js");
 var Enemy = require("./enemy.js");
+var fs = require('fs');
 var count = 0;
 //- Socket.io Connection -------------------------------------------------------------------//
 io.sockets.on('connection', function (socket) {
@@ -87,6 +88,7 @@ io.sockets.on('connection', function (socket) {
             if(c.hp <= 0){
                 if(c.id == socket.id){
                     socket.emit("Result", c.point);
+                    fs.appendFile('Point.txt', "スコア：" + c.point + "\n");
                     socket.disconnect();
                 }
             }
