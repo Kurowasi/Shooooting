@@ -47,3 +47,8 @@ s.on("Result", function(result1){
     'use strict';
     result = result1;
 });
+
+s.on("Rankings", function(text1){
+    'use strict';
+    text = text1;
+});

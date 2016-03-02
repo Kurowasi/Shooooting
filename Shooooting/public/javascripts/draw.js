@@ -37,11 +37,20 @@ function draw(){
             ctx.closePath();
         });        
     }else if(gameFlag == false){
+        // draw result
         ctx.fillStyle = "rgb(0, 0, 0)";
         ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         ctx.fillStyle = "rgb(255, 0, 0)";
         ctx.font = "64px 'Comic Sans MS'";
-        ctx.fillText("GAME OVER", (CANVAS_WIDTH / 2) - 200, (CANVAS_HEIGHT / 2));
-        ctx.fillText("スコア：" + result + "点", (CANVAS_WIDTH / 2) - 200, (CANVAS_HEIGHT / 2) + 100);
+        ctx.fillText("GAME OVER", (CANVAS_WIDTH / 2) - 100, (CANVAS_HEIGHT / 2));
+        ctx.fillText("スコア：" + result + "点", (CANVAS_WIDTH / 2) - 50, (CANVAS_HEIGHT / 2) + 100);
+        
+        // draw Ranking
+        ctx.fillStyle = "rgb(0, 0, 255)"
+        ctx.font ="32px 'Comic Sans MS'";
+        ctx.fillText("-Ranking-", 40, 70);
+        for(var i = 0; i < 10; i++){
+            ctx.fillText( i + 1 + "位" + text[i] + "点", 50, 130 + 50 * i)
+        }
     }
 }

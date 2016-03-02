@@ -47,18 +47,44 @@ io.sockets.on('connection', function (socket) {
     var timer = 0;  
     var loop = setInterval(mainLoop, 16);
     var charas;
+    //- readFile -------------------------------------------------------------------------//
+    fs.readFile('Point.txt', 'utf8', function(err, t){
+        'use strict';
+        // ,ごとに区切って配列を作る
+        var text = t.split(",");
+        // 『・』という邪魔なものが入っているので取り除く
+        text[0] = text[0].substr(1);
+        // 配列の中身が文字列なので数字に変換
+        for(var i = 0; i < text.length; i++){
+            text[i] = parseInt(text[i]);
+        }
+        // 選択ソート
+        var num;
+        for(var i = 0; i < text.length - 1; i++){
+            for(var j = i + 1; j < text.length; j++){
+                if(text[i] < text[j]){
+                    num = text[i];
+                    text[i] = text[j];
+                    text[j] = num;
+                }
+            }
+        }
+        /*
+        // 10位までしかいらないので、ほかの配列を削除
+        text.splice(10, text.length);
+        // 現時点の状態を書き込む
+        fs.writeFile('Point.txt', "");
+        for(var i = 0; i < text.length; i++){
+            fs.appendFile('Point.txt', text[i] + ",");
+        }
+        */
+        socket.emit("Rankings", text);
+    });
     //- make chara --------------------------------------------------------------------//
     Chara.makeChara(socket.id);
     //- mainloop function -------------------------------------------------------------//
     function mainLoop(){
         timer++;
-        
-        //reset loop
-        if(count == 0){
-            timer = 0;
-            Enemy.deleteEnemy();
-            Enemy.deleteShot();
-        }
         
         //reset timer
         if(timer >= 100000000){
@@ -88,7 +114,7 @@ io.sockets.on('connection', function (socket) {
             if(c.hp <= 0){
                 if(c.id == socket.id){
                     socket.emit("Result", c.point);
-                    fs.appendFile('Point.txt', "スコア：" + c.point + "\n");
+                    fs.appendFile('Point.txt', c.point + ",");
                     socket.disconnect();
                 }
             }
@@ -134,6 +160,47 @@ io.sockets.on('connection', function (socket) {
     socket.on("disconnect", function(){
         'use strict';
         count--;
+        //reset loop
+        if(count == 0){
+            timer = 0;
+            Enemy.deleteEnemy();
+            Enemy.deleteShot();
+
+            //- readFile -------------------------------------------------------------------------//
+            fs.readFile('Point.txt', 'utf8', function(err, t){
+                'use strict';
+                // ,ごとに区切って配列を作る
+                var text = t.split(",");
+                console.log(text);
+                // 『・』という邪魔なものが入っているので取り除く
+                text[0] = text[0].substr(1);
+                // 配列の中身が文字列なので数字に変換
+                for(var i = 0; i < text.length; i++){
+                    text[i] = parseInt(text[i]);
+                }
+                // 選択ソート
+                var num;
+                for(var i = 0; i < text.length - 1; i++){
+                    for(var j = i + 1; j < text.length; j++){
+                        if(text[i] < text[j]){
+                            num = text[i];
+                            text[i] = text[j];
+                            text[j] = num;
+                        }
+                    }
+                }
+                console.log(text);
+                // 10位までしかいらないので、ほかの配列を削除
+                text.splice(10, text.length);
+                console.log(text);
+                // 現時点の状態を書き込む
+                fs.writeFile('Point.txt', "");
+                for(var i = 0; i < text.length; i++){
+                    fs.appendFile('Point.txt', text[i] + ",");
+                }
+            });
+
+        }
         clearInterval(loop);
         charas.forEach(function(c, i){
             'use strict';
