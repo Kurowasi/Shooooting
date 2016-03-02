@@ -51,7 +51,13 @@ io.sockets.on('connection', function (socket) {
     //- mainloop function -------------------------------------------------------------//
     function mainLoop(){
         timer++;
-        console.log("接続人数は" + count + "です");
+        //console.log("接続人数は" + count + "です");
+        console.log(timer);
+        
+        //reset timer
+        if(timer >= 100000000){
+            timer = 0;
+        }
         
         //make enemy
         if(timer % 100 == 0){
