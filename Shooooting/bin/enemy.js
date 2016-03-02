@@ -102,6 +102,14 @@ module.exports = {
         'use strict';
         enemies.push(new Enemy03());
     },
+    deleteEnemy: function(){
+        'use strict';
+        enemies.splice(0, enemies.length);
+    },
+    deleteShot: function(){
+        'use strict';
+        shots.splice(0, shots.length);
+    },
     update: function(){
         'use strict';
         // update chara

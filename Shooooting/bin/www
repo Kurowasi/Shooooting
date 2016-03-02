@@ -43,7 +43,7 @@ var count = 0;
 io.sockets.on('connection', function (socket) {
     count++;
     //- local variables ----------------------------------------------------------------//
-    var timer = 0;
+    var timer = 0;  
     var loop = setInterval(mainLoop, 16);
     var charas;
     //- make chara --------------------------------------------------------------------//
@@ -51,8 +51,14 @@ io.sockets.on('connection', function (socket) {
     //- mainloop function -------------------------------------------------------------//
     function mainLoop(){
         timer++;
-        //console.log("接続人数は" + count + "です");
-        console.log(timer);
+        
+        //reset loop
+        if(count == 0){
+            timer = 0;
+            clearInterval(loop);
+            Enemy.deleteEnemy();
+            Enemy.deleteShot();
+        }
         
         //reset timer
         if(timer >= 100000000){
