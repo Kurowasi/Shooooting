@@ -55,7 +55,6 @@ io.sockets.on('connection', function (socket) {
         //reset loop
         if(count == 0){
             timer = 0;
-            clearInterval(loop);
             Enemy.deleteEnemy();
             Enemy.deleteShot();
         }
@@ -133,6 +132,7 @@ io.sockets.on('connection', function (socket) {
     socket.on("disconnect", function(){
         'use strict';
         count--;
+        clearInterval(loop);
         charas.forEach(function(c, i){
             'use strict';
             if(c.id == socket.id){

@@ -45,6 +45,6 @@ function mainLoop(){
         canvas[0].style.visibility = "hidden";
         canvas[1].style.visibility = "visible";
     }
-    console.log(gameFlag);
+
     draw();
 }
