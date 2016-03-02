@@ -82,9 +82,15 @@ io.sockets.on('connection', function (socket) {
         // update chara
         charas = Chara.returnCharas();
         
-        // update chara shots
+        // update chara
         charas.forEach(function(c, i){
             'use strict';
+            if(c.hp <= 0){
+                if(c.id == socket.id){
+                    socket.disconnect();
+                }
+            }
+            // update chara shots
             c.updateShots();
         });
         

@@ -14,6 +14,7 @@ s.on("connect", function(data){
 // disconnect socket.io
 s.on("disconnect", function(){
     console.log("接続解除");
+    gameFlag = false;
 });
 
 

@@ -5,6 +5,7 @@ var ctx;
 var loop;
 var timer = 0;
 var canvas = [];
+var gameFlag = true;
 //- constant ------------------------------------------------------------------------------//
 var CANVAS_WIDTH = 900, CANVAS_HEIGHT = 600;
 //- init function -------------------------------------------------------------------------//
@@ -43,6 +44,6 @@ function mainLoop(){
         canvas[0].style.visibility = "hidden";
         canvas[1].style.visibility = "visible";
     }
-    
+    console.log(gameFlag);
     draw();
 }
