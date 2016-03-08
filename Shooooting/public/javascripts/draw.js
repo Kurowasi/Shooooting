@@ -13,7 +13,7 @@ function draw(){
             // draw chara shot
             c.shots.forEach(function(s, i){
                 'use strict';
-                ctx.drawImage(img[2], 60, 0, 30, 30, s.x - s.r * 2, s.y - s.r * 2, s.r * 3, s.r * 3);
+                ctx.drawImage(img[2], 60, 0, 30, 30, s.x - s.r * 2, s.y - s.r * 1.5, s.r * 3, s.r * 3);
             });
         });
         // draw enemy
@@ -24,11 +24,8 @@ function draw(){
         // draw enemy shots
         shots.forEach(function(s, i){
             'use strict';
-            ctx.fillStyle = "rgb(0, 0, 255)";
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.closePath();
+            ctx.drawImage(img[2], 60, 30, 30, 30, s.x - s.r * 2, s.y - s.r * 1.5, s.r * 3, s.r * 3);
+
         });        
     }else if(gameFlag == false){
         // draw result
