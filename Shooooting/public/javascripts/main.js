@@ -9,6 +9,7 @@ var gameFlag = true;
 var result;
 var text;
 var img = [];
+var audio = [];
 //- constant ------------------------------------------------------------------------------//
 var CANVAS_WIDTH = 900, CANVAS_HEIGHT = 600;
 //- init function -------------------------------------------------------------------------//
@@ -37,6 +38,13 @@ function init(){
         img[i].src = "images/img0" + i + ".png";
     }
     
+    // inisialize audio
+    for(var i = 0; i < 3; i++){
+        audio[i] = new Audio();
+        audio[i].src = "audios/audio0" + i + ".wav";
+    }
+    
+    
     // inisialize loop
     loop = setInterval(mainLoop, 16);
 }
@@ -44,6 +52,9 @@ function init(){
 function mainLoop(){
     'use strict';
     timer++;
+    
+    audio[2].play();
+    
     if(timer % 2 == 0){
         ctx = canvas[1].getContext("2d");
         canvas[0].style.visibility = "visible";

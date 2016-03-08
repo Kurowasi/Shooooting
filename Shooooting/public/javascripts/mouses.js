@@ -9,4 +9,5 @@ function mouseMove(e){
 function mouseDown(){
     'use strict';
     s.emit("mouseDown");
+    audio[0].play();
 }
