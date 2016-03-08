@@ -26,6 +26,7 @@ function draw(){
             ctx.drawImage(img[2], 60, 30, 30, 30, s.x - s.r * 2, s.y - s.r * 1.5, s.r * 3, s.r * 3);
 
         });        
+        audio[2].play();
     }else if(gameFlag == false){
         // draw result
         ctx.fillStyle = "rgb(0, 0, 0)";
@@ -42,5 +43,6 @@ function draw(){
         for(var i = 0; i < 10; i++){
             ctx.fillText( i + 1 + "位" + text[i] + "点", 50, 130 + 50 * i)
         }
+        audio[2].pause();
     }
 }

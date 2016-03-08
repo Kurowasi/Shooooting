@@ -7,7 +7,7 @@ function Chara(id){
     this.y = 570;
     this.w = 30;
     this.h = 30;
-    this.hp = 1000;
+    this.hp = 160;
     this.shots = [];
     this.id = id;
     this.point = 0;

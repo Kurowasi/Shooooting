@@ -53,8 +53,6 @@ function mainLoop(){
     'use strict';
     timer++;
     
-    audio[2].play();
-    
     if(timer % 2 == 0){
         ctx = canvas[1].getContext("2d");
         canvas[0].style.visibility = "visible";
