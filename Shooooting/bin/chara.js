@@ -15,7 +15,9 @@ function Chara(id){
 Chara.prototype = {
     makeShot: function(){
         'use strict';
-        this.shots.push(new CharaShot(this.x, this.y));        
+        if(this.shots.length < 5){
+            this.shots.push(new CharaShot(this.x, this.y));        
+        }
     },
     updateShots: function(){
         'use strict';
