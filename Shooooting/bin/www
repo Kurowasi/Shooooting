@@ -166,6 +166,7 @@ io.sockets.on('connection', function (socket) {
             Enemy.deleteEnemy();
             Enemy.deleteShot();
 
+            /*
             //- readFile -------------------------------------------------------------------------//
             fs.readFile('Point.txt', 'utf8', function(err, t){
                 'use strict';
@@ -199,6 +200,7 @@ io.sockets.on('connection', function (socket) {
                     fs.appendFile('Point.txt', text[i] + ",");
                 }
             });
+            */
 
         }
         clearInterval(loop);
