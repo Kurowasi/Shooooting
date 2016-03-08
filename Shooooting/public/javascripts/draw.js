@@ -3,8 +3,7 @@ function draw(){
     'use strict';
     if(gameFlag == true){
         // draw background
-        ctx.fillStyle = "rgb(0, 0, 0)";
-        ctx.fillRect(CANVAS.x, CANVAS.y, CANVAS.WIDTH, CANVAS.HEIGHT);
+        ctx.drawImage(img[3], CANVAS.x, CANVAS.y, CANVAS.WIDTH, CANVAS.HEIGHT);
         // draw chara
         charas.forEach(function(c, i){
             'use strict';
