@@ -8,6 +8,7 @@ var canvas = [];
 var gameFlag = true;
 var result;
 var text;
+var img = [];
 //- constant ------------------------------------------------------------------------------//
 var CANVAS_WIDTH = 900, CANVAS_HEIGHT = 600;
 //- init function -------------------------------------------------------------------------//
@@ -29,6 +30,12 @@ function init(){
     
     // inisialize ctx
     ctx = canvas[0].getContext('2d');
+    
+    // inisialize img
+    for(var i = 0; i < 1; i++){
+        img[i] = new Image();
+        img[i].src = "images/img0" + i + ".png";
+    }
     
     // inisialize loop
     loop = setInterval(mainLoop, 16);

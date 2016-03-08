@@ -8,8 +8,7 @@ function draw(){
         // draw chara
         charas.forEach(function(c, i){
             'use strict';
-            ctx.fillStyle = "rgb(255, 0, 0)";
-            ctx.fillRect(c.x, c.y, c.w, c.h);
+            ctx.drawImage(img[0], 0, 0, 64, 64, c.x, c.y, c.w, c.h);
             
             // draw chara shot
             c.shots.forEach(function(s, i){
