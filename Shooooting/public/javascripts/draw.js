@@ -13,18 +13,13 @@ function draw(){
             // draw chara shot
             c.shots.forEach(function(s, i){
                 'use strict';
-                ctx.fillStyle = "rgb(255, 0, 0)";
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.closePath();
+                ctx.drawImage(img[2], 60, 0, 30, 30, s.x - s.r * 2, s.y - s.r * 2, s.r * 3, s.r * 3);
             });
         });
         // draw enemy
         enemies.forEach(function(e, i){
             'use strict';
-            ctx.fillStyle = "rgb(0, 0, 255)";
-            ctx.fillRect(e.x, e.y, e.w, e.h);
+            ctx.drawImage(img[1], 0, 0 + 64 * e.type, 64, 64, e.x, e.y, e.w, e.h);
         });
         // draw enemy shots
         shots.forEach(function(s, i){

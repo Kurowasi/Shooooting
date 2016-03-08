@@ -32,7 +32,7 @@ function init(){
     ctx = canvas[0].getContext('2d');
     
     // inisialize img
-    for(var i = 0; i < 1; i++){
+    for(var i = 0; i < 4; i++){
         img[i] = new Image();
         img[i].src = "images/img0" + i + ".png";
     }

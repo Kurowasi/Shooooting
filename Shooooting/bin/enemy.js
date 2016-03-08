@@ -13,6 +13,7 @@ function Enemy(){
     this.timer = 0;
     this.hp = 100;
     this.point = 100;
+    this.type = 0;
     
     this.shot = {
         r: 10,
@@ -32,6 +33,7 @@ function Enemy01(){
     this.h = 60;
     this.hp = 200;
     this.point = 200;
+    this.type = 1;
     
     this.shot = {
         r: 20,
@@ -48,6 +50,7 @@ function Enemy02(){
     this.h = 60;
     this.hp = 100;
     this.point = 100;
+    this.type = 2;
     
     this.shot = {
         r: 10,
@@ -64,6 +67,7 @@ function Enemy03(){
     this.h = 30;
     this.hp = 150;
     this.point = 150;
+    this.type = 3;
     
     this.shot = {
         r: 20,
